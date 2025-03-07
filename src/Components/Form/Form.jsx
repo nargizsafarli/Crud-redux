@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addUser, fetchUsers } from '../../Store/action';
 
 function Form() {
-    const [userName, setUserName] = useState("");
+    const [name, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [age, setAge] = useState("");
@@ -14,7 +14,7 @@ function Form() {
    
   
     const usernameRegex =/^[a-zA-Z0-9]{3,13}$/;
-    const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    // const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     const ageRegex = /^[0-9]{1,3}$/;
 
@@ -22,7 +22,7 @@ function Form() {
     let newErrors = {};
    let isValid=true;
   
-    if (!userName || !usernameRegex.test(userName)) {
+    if (!name || !usernameRegex.test(name)) {
       newErrors.userName = "UserName must be 3-13 characters and contain only letters and numbers";
       isValid=false
     }
@@ -32,10 +32,10 @@ function Form() {
       isValid=false
     }
   
-    if (!password || !passwordRegex.test(password)) {
-      newErrors.password = "Password must be 6-16 characters and include letters, numbers";
-      isValid=false
-    }
+    // if (!password || !passwordRegex.test(password)) {
+    //   newErrors.password = "Password must be 6-16 characters and include letters, numbers";
+    //   isValid=false
+    // }
   
     if (!age || !ageRegex.test(age)) {
       newErrors.age = "Age must be a number between 1 and 999";
@@ -49,10 +49,9 @@ function Form() {
   const handleSubmit=(e)=>{
     e.preventDefault();  
     if(validate()){
-       const newUser={id:Date.now(),userName,email,password,age}
+       const newUser={id:Date.now(),name,email,age}
        console.log(newUser);
        dispatch(addUser(newUser));
-      //  dispatch(fetchUsers())
        navigate("/user")
     }
   }
@@ -64,10 +63,10 @@ function Form() {
         <input
           type="text"
           placeholder="UserName"
-          value={userName}
+          value={name}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <span className="error">{errors.userName}</span>
+        <span className="error">{errors.name}</span>
         <input
           type="text"
           placeholder="Email"
@@ -75,13 +74,7 @@ function Form() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <span className="error">{errors.email}</span>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <span className="error">{errors.password}</span>
+
         <input
           type="text"
           placeholder="Age"
