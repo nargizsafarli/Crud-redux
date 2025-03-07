@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import Form from './Components/Form/Form'
 import User from './Components/User/User'
-import Update from './Components/Update/Update'
+// import Update from './Components/Update/Update'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Form/>}/>
         <Route path="user" element={<User/>}/>
-        <Route path='update/:id' element={<Update/>}/>
+        {/* <Route path='update/:id' element={<Update/>}/> */}
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addUser, fetchUsers } from '../../Store/action';
 
 function Form() {
     const [userName, setUserName] = useState("");
@@ -8,14 +10,14 @@ function Form() {
     const [age, setAge] = useState("");
     const [errors, setErrors] = useState({});
     const navigate=useNavigate()
-    
+    const dispatch=useDispatch();
+   
   
     const usernameRegex =/^[a-zA-Z0-9]{3,13}$/;
     const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     const ageRegex = /^[0-9]{1,3}$/;
 
-    
   const validate = () => {
     let newErrors = {};
    let isValid=true;
@@ -44,6 +46,16 @@ function Form() {
     return isValid
     
   };
+  const handleSubmit=(e)=>{
+    e.preventDefault();  
+    if(validate()){
+       const newUser={id:Date.now(),userName,email,password,age}
+       console.log(newUser);
+       dispatch(addUser(newUser));
+      //  dispatch(fetchUsers())
+       navigate("/user")
+    }
+  }
 
   return (
     <div className="main-container">
@@ -79,7 +91,7 @@ function Form() {
         <span className="error">{errors.age}</span>
         <div  className="button">
           <button 
-        //   onClick={()=>navigate("user")}
+          onClick={handleSubmit}
           >Submit</button>
         </div>
       </div>
