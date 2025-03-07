@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addUser, fetchUsers } from '../../Store/action';
+import "./form.css"
 
 function Form() {
     const [name, setUserName] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [age, setAge] = useState("");
     const [errors, setErrors] = useState({});
     const navigate=useNavigate()
@@ -14,7 +14,6 @@ function Form() {
    
   
     const usernameRegex =/^[a-zA-Z0-9]{3,13}$/;
-    // const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     const ageRegex = /^[0-9]{1,3}$/;
 
@@ -66,7 +65,7 @@ function Form() {
           value={name}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <span className="error">{errors.name}</span>
+        <span className="error">{errors.userName}</span>
         <input
           type="text"
           placeholder="Email"
@@ -86,6 +85,7 @@ function Form() {
           <button 
           onClick={handleSubmit}
           >Submit</button>
+          <button onClick={()=>{navigate("/user")}}>Users</button>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
   }
   
   .user-container {
-    /* height: 80vh; */
+
     padding: 90px 0;
     gap: 20px;
     display: flex;
@@ -100,6 +100,6 @@
   
   td button:last-child {
     background-color: red;
-    color: white;
+    color: white;
   }
   
