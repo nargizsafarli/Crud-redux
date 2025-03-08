@@ -9,17 +9,9 @@ export const fetchUsers = () => async (dispatch) => {
     dispatch({ type: "FETCH_USERS_FAILURE", payload: error.message });
   }
 };
-//    export const addUser=(userData)=async(dispatch)=>{
-//     const newUser={...userData}
-//     dispatch({type:"ADD_USER_SUCCESS", payload: newUser})
-//     await fetch ("https://jsonplaceholder.typicode.com/users",{
-//         method:"POST",
-//         headers: { "Content-Type": "application/json" },
-//          body: JSON.stringify(newUser),
-//     })
-//    }
+
+
 export const addUser = (userData) => async (dispatch) => {
-    
   const response = await fetch("https://jsonplaceholder.typicode.com/users",
      {
     method: "POST",
@@ -35,8 +27,8 @@ export const deleteUser = (id) => async (dispatch) => {
     method: "DELETE",
   });
   dispatch({ type: "DELETE_USER_SUCCESS", payload: id });
-//   dispatch(fetchUsers())
 };
+
 
 export const updateUser = (user) => async (dispatch) => {
   const response = await fetch(

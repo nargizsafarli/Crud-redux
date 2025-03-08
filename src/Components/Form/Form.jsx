@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addUser, fetchUsers } from '../../Store/action';
+import { addUser } from '../../Store/action';
 import "./form.css"
 
 function Form() {
@@ -30,11 +30,6 @@ function Form() {
       newErrors.email = "Email must be a valid Gmail address (e.g. example@gmail.com)";
       isValid=false
     }
-  
-    // if (!password || !passwordRegex.test(password)) {
-    //   newErrors.password = "Password must be 6-16 characters and include letters, numbers";
-    //   isValid=false
-    // }
   
     if (!age || !ageRegex.test(age)) {
       newErrors.age = "Age must be a number between 1 and 999";
