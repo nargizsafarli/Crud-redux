@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 function User() {
   const dispatch = useDispatch();
   const { users, loading, error } = useSelector((state) => state.form);
+  
+  console.log(users, "users");
   const [editingUser, setEditingUser] = useState(null);
   const [editedData, setEditedData] = useState({
     name: "",
