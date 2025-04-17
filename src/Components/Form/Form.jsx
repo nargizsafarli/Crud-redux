@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addUser } from '../../Store/action';
+import { addUser } from '../../store/action';
 import "./form.css"
 
 function Form() {

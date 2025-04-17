@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./user.css";
-import { deleteUser, fetchUsers, updateUser } from "../../Store/action";
+import { deleteUser, fetchUsers, updateUser } from "../../store/action";
 import { useNavigate } from "react-router-dom";
 
 function User() {
